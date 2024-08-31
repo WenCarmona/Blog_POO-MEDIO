@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,redirect
 from django.core.paginator import Paginator
 from .models import Post
 from .forms import PostForm
@@ -28,7 +28,7 @@ def detalle_publicacion(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/detalle_publicacion.html', {'post': post})
 
-def crear_ppublicacion(request):
+def crear_publicacion(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
