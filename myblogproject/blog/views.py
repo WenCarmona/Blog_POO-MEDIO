@@ -23,3 +23,7 @@ def lista_publicaciones(request):
     page_obj = Paginator.get_page(page_number)
 
     return render(request, 'blog/lista_publicaciones.html', {'page_obj': page_obj})
+
+def detalle_publicacion(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, 'blog/detalle_publicacion.html', {'post': post})
