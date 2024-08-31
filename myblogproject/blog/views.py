@@ -27,3 +27,13 @@ def lista_publicaciones(request):
 def detalle_publicacion(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/detalle_publicacion.html', {'post': post})
+
+def crear_ppublicacion(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_publicaciones')
+    else:
+        form = PostForm()
+    return render(request, 'blog/crear_publicacion.html', {'form': form})
