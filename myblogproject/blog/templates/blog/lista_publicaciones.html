@@ -5,37 +5,34 @@
 </head>
 <body>
     <h1>Lista de Publicaciones</h1>
-
-    <form method="get" action="">
-        <input type="text" name="q" placeholder="Buscar por título o contenido" value="{{ request.GET.q }}">
-        <input type="date" name="fecha" value="{{ request.GET.fecha }}">
-        <input type="text" name="categoria" placeholder="Categoría" value="{{ request.GET.categoria }}">
+    <a href="{% url 'crear_publicacion' %}">Crear Nueva Publicación</a>
+    <form method="get" action="{% url 'lista_publicaciones' %}">
+        <input type="text" name="q" placeholder="Buscar publicaciones">
+        <input type="date" name="fecha" placeholder="Filtrar por fecha">
+        <input type="text" name="categoria" placeholder="Filtrar por categoría">
         <button type="submit">Buscar</button>
     </form>
-
     <ul>
         {% for post in page_obj %}
-            <li><a href="{% url 'detalle_publicacion' post.pk %}">{{ post.titulo }}</a></li>
+        <li>
+            <a href="{% url 'detalle_publicacion' pk=post.pk %}">{{ post.titulo }}</a>
+        </li>
         {% endfor %}
     </ul>
-
     <div>
-        <span>Page: {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+        <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
         <div>
-            <span>Pages:</span>
             <span>
                 {% if page_obj.has_previous %}
-                    <a href="?page=1{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">First</a>
-                    <a href="?page={{ page_obj.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Previous</a>
+                <a href="?page=1">First</a>
+                <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
                 {% endif %}
                 {% if page_obj.has_next %}
-                    <a href="?page={{ page_obj.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Next</a>
-                    <a href="?page={{ page_obj.paginator.num_pages }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Last</a>
+                <a href="?page={{ page_obj.next_page_number }}">Next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
                 {% endif %}
             </span>
         </div>
     </div>
-
-    <a href="{% url 'crear_publicacion' %}">Crear nueva publicación</a>
 </body>
 </html>

@@ -37,3 +37,14 @@ def crear_publicacion(request):
     else:
         form = PostForm()
     return render(request, 'blog/crear_publicacion.html', {'form': form})
+
+def editar_publicacion(request, pk):
+    post = get_object_or_404(post, pk=pk)
+    if request.method == 'POST':
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('detalle_publicacion', pk=post.pk)
+    else:
+        form = PostForm(instance=post)
+    return render(request, 'blog/editar_publicacion.html', {'form': form})

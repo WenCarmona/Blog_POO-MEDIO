@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Crear Publicación</title>
+    <title>Agregar Publicación</title>
 </head>
 <body>
-    <h1>Crear Publicación</h1>
+    <h1>Agregar Nueva Publicación</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Guardar</button>
+        <button type="submit">Agregar Publicación</button>
     </form>
-    <a href="{% url 'lista_publicaciones' %}">Volver a la lista de publicaciones</a>
+    <a href="{% url 'lista_publicaciones' %}">Cancelar</a>
 </body>
 </html>
