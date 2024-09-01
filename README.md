@@ -1,2 +1,8 @@
 # Blog_POO MEDIO
  Creacion de Blog para trabajo final
+Este es un proyecto de blog básico implementado en Django. El proyecto permite a los usuarios ver una lista de publicaciones, filtrar publicaciones por fecha o categoría, buscar publicaciones por título o contenido, y ver los detalles de una publicación específica. También incluye funcionalidades para la creación y edición de publicaciones.
+Muestra una lista paginada de todas las publicaciones, Permite a los usuarios ver los detalles completos de una publicación específica, pueden filtrar las publicaciones por fecha de publicación y categoría, se puede buscar publicaciones por título o contenido, permite agregar nuevas publicaciones al blog y editar las mismas.
+
+Para crear una publicacion en el blog debes entrar al servidor http://127.0.0.1:8000/publicacion/agregar/ y diligenciar los campos correspondientes de titulo, contenido, fecha de publicacion, categoria y autor.
+
+Para ejecutar el proyecto localmente debe descargar el archivo comprimido desde el link de github, descomprimir la carpeta y abrir el proyecto en visual studio code, abre la una nueva terminar y realiza la instalacion de Django con el comando: 'pip install django', realiza las migraciones con los comandos:'python manage.py makemigrations' y  'python manage.py migrate' y ejecuta el servidor con el comando: 'python manage.py runserver'. te debe salir un link http asi: 'http://127.0.0.1:8000' le das ctrl+click para acceder.
