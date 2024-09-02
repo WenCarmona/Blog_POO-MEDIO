@@ -6,9 +6,9 @@ from django.db.models import Q
 
 # Create your views here.
 def lista_publicaciones(request):
-    query = request.GET.get('q')
-    fecha = request.GET.get('fecha')
-    categoria = request.GET('categoria')
+    query = request.GET.get('q', '')
+    fecha = request.GET.get('fecha','')
+    categoria = request.GET.get('categoria','')
 
     posts = Post.objects.all()
     if query:
@@ -18,9 +18,9 @@ def lista_publicaciones(request):
     if categoria:
         posts = posts.filter(categoria=categoria)
 
-    Paginator = Paginator(posts, 10)
+    paginator = Paginator(posts, 10)
     page_number = request.GET.get('page')
-    page_obj = Paginator.get_page(page_number)
+    page_obj = paginator.get_page(page_number)
 
     return render(request, 'blog/lista_publicaciones.html', {'page_obj': page_obj})
 
@@ -39,7 +39,7 @@ def crear_publicacion(request):
     return render(request, 'blog/crear_publicacion.html', {'form': form})
 
 def editar_publicacion(request, pk):
-    post = get_object_or_404(post, pk=pk)
+    post = get_object_or_404(Post, pk=pk)
     if request.method == 'POST':
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
@@ -47,4 +47,4 @@ def editar_publicacion(request, pk):
             return redirect('detalle_publicacion', pk=post.pk)
     else:
         form = PostForm(instance=post)
-    return render(request, 'blog/editar_publicacion.html', {'form': form})
+    return render(request, 'blog/editar_publicacion.html', {'form': form, 'post': post})

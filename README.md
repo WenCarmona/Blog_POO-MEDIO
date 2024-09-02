@@ -1,5 +1,5 @@
 # Blog_POO MEDIO
- Creacion de Blog para trabajo final
+Creacion de Blog para trabajo final
 Este es un proyecto de blog básico implementado en Django. El proyecto permite a los usuarios ver una lista de publicaciones, filtrar publicaciones por fecha o categoría, buscar publicaciones por título o contenido, y ver los detalles de una publicación específica. También incluye funcionalidades para la creación y edición de publicaciones.
 Muestra una lista paginada de todas las publicaciones, Permite a los usuarios ver los detalles completos de una publicación específica, pueden filtrar las publicaciones por fecha de publicación y categoría, se puede buscar publicaciones por título o contenido, permite agregar nuevas publicaciones al blog y editar las mismas.
 

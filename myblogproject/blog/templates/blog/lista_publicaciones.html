@@ -26,12 +26,12 @@
         <div>
             <span>
                 {% if page_obj.has_previous %}
-                <a href="?page=1">First</a>
-                <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                <a href="?page=1">Primera Pagina</a>
+                <a href="?page={{ page_obj.previous_page_number }}">Volver</a>
                 {% endif %}
                 {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">Next</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+                <a href="?page={{ page_obj.next_page_number }}">Pagina Siguiente </a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">Pagina Anterior</a>
                 {% endif %}
             </span>
         </div>
